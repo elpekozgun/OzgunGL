@@ -12,7 +12,7 @@ static int StartGL()
 {
 	if (!glfwInit())
 		CLOSEWIN();
-
+	   
 	window = glfwCreateWindow(640, 640, "", NULL, NULL);
 	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
