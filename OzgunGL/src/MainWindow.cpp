@@ -1,6 +1,7 @@
 #include <string>
-#include <GL/glew.h>
-#include <GL/GLU.h>
+//#include <GL/glew.h>
+//#include <GL/GLU.h>
+#include<glad.h>
 #include <GLFW/glfw3.h>
 #include "Macros.h"
 
@@ -20,14 +21,16 @@ static int StartGL()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwSetWindowTitle(window, "Celestial Engine V0.0 - Client");
 
+
+
 	if (!window)
 		CLOSEWIN();
 
 	glfwMakeContextCurrent(window);
 
-	if (glewInit() != GLEW_OK)
-		LOG("Glew Error");
-	LOG(glGetString(GL_VERSION));
+	//if (glewInit() != GLEW_OK)
+	//	LOG("Glew Error");
+	//LOG(glGetString(GL_VERSION));
 
 	glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
 
