@@ -29,5 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\BasicShader.shader" />
+    <None Include="res\Shaders\BasicVertexShader.shader" />
+    <None Include="res\Shaders\BasicFragmentShader.shader" />
   </ItemGroup>
 </Project>
