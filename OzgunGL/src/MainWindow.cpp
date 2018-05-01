@@ -100,29 +100,11 @@ int main(void)
 	
 	glfwSetFramebufferSizeCallback(window, FrameBufferSizeCallback);
 
-	glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
-
-	float vertices[] =
-		{-0.5f,-0.5f,0.0f,
-		  0.5f,-0.5f,0.0f,
-		  0.0f, 0.5f,0.0f};
-
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	unsigned int VBO;
-	glGenBuffers(1,&VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),&vertices[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1,  &vertexShaderSource , NULL);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
-	ShaderLogger(vertexShader,"VERTEX" );
+	ShaderLogger(vertexShader, "VERTEX");
 
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -140,9 +122,31 @@ int main(void)
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 	glUseProgram(ShaderProgram);
+
+	glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
+
+	float vertices[] = {-0.5f,-0.5f,0.0f,
+						 0.5f,-0.5f,0.0f,
+						 0.0f, 0.5f,0.0f};
+
+	float indices[] = { 0,1,2 };
+
+	unsigned int VAO,VBO,EBO;
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+
+	glGenBuffers(1,&VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),&vertices[0], GL_STATIC_DRAW);
+
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	//glBindVertexArray(VAO);
+	glEnableVertexAttribArray(0);
+
+
 	
 
-	glBindVertexArray(VAO);
 
 
 	Render(window);
