@@ -21,15 +21,24 @@
     <ClCompile Include="..\Dependencies\glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\BasicShader.shader" />
-    <None Include="res\Shaders\BasicVertexShader.shader" />
-    <None Include="res\Shaders\BasicFragmentShader.shader" />
+    <None Include="res\Shaders\BasicShader.glsl" />
+    <None Include="res\Shaders\BasicFragmentShader.glsl" />
+    <None Include="res\Shaders\BasicVertexShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Notes\OldProcedureAndNotes.txt" />
   </ItemGroup>
 </Project>

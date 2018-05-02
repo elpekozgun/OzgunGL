@@ -134,14 +134,19 @@
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c" />
     <ClCompile Include="src\MainWindow.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Macros.h" />
+    <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\BasicFragmentShader.shader" />
-    <None Include="res\Shaders\BasicShader.shader" />
-    <None Include="res\Shaders\BasicVertexShader.shader" />
+    <None Include="res\Shaders\BasicFragmentShader.glsl" />
+    <None Include="res\Shaders\BasicShader.glsl" />
+    <None Include="res\Shaders\BasicVertexShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Notes\OldProcedureAndNotes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
