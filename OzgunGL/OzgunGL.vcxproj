@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="src\Macros.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\BasicFragmentShader.glsl" />
@@ -147,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Textures\awesomeface.png" />
+    <Image Include="res\Textures\container.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
