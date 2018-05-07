@@ -133,7 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c" />
-    <ClCompile Include="src\MainWindow.cpp" />
+    <ClCompile Include="src\LigthingMain.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +146,9 @@
     <None Include="res\Shaders\BasicFragmentShader.glsl" />
     <None Include="res\Shaders\BasicShader.glsl" />
     <None Include="res\Shaders\BasicVertexShader.glsl" />
+    <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
+    <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
+    <None Include="res\Shaders\constantLightShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />

@@ -208,6 +208,7 @@ int main(void)
 		lastFrame = currentFrame;
 
 		//render
+		//glClearColor(1.0f, 0.5f, 0.31f, 1.0f);
 		glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 
@@ -238,11 +239,11 @@ int main(void)
 		unsigned int projectionLoc = glGetUniformLocation(shader.ID, "Projection");
 		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &Projection[0][0]);
 
-		for (int i = 1; i < 11; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			glm::mat4 Model = glm::mat4(1.0f);
-			Model = glm::translate(Model, cubePositions[i-1]);
-			float angle = 20.0f * i * glfwGetTime();
+			Model = glm::translate(Model, cubePositions[i]);
+			float angle = 20.0f * (10-i) * glfwGetTime();
 			Model = glm::rotate(Model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 
 			unsigned int transformLoc = glGetUniformLocation(shader.ID, "Model");
@@ -250,8 +251,6 @@ int main(void)
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		}
-
-
 		
 		//swap buffer and poll IO
 		glfwSwapBuffers(window);		
