@@ -46,6 +46,8 @@
     <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
     <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
     <None Include="res\Shaders\constantLightShader.glsl" />
+    <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
+    <None Include="res\Shaders\FragmentShaderMaterialTexture.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
@@ -55,6 +57,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Textures\awesomeface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Textures\crate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Textures\container2_specular.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Textures\matrix.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -149,6 +149,8 @@
     <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
     <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
     <None Include="res\Shaders\constantLightShader.glsl" />
+    <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
+    <None Include="res\Shaders\FragmentShaderMaterialTexture.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
@@ -156,6 +158,9 @@
   <ItemGroup>
     <Image Include="res\Textures\awesomeface.png" />
     <Image Include="res\Textures\container.jpg" />
+    <Image Include="res\Textures\container2_specular.png" />
+    <Image Include="res\Textures\crate.png" />
+    <Image Include="res\Textures\matrix.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
