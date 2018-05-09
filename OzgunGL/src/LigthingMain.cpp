@@ -5,9 +5,9 @@
 #include "Macros.h"
 #include "Shader.h"
 #include "stb_image.h"
-#include "glm\glm.hpp"
-#include "glm\gtc\matrix_transform.hpp"
-#include "glm\gtc\type_ptr.hpp"
+#include "GLM/glm\glm.hpp"
+#include "GLM/glm\gtc\matrix_transform.hpp"
+#include "GLM/glm\gtc\type_ptr.hpp"
 #include "Camera.h"	
 
 
