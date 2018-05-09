@@ -47,7 +47,11 @@
     <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
     <None Include="res\Shaders\constantLightShader.glsl" />
     <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
-    <None Include="res\Shaders\FragmentShaderMaterialTexture.glsl" />
+    <None Include="res\Shaders\FragmentShaderTexturePointLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureDirectionalLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureSpotLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />

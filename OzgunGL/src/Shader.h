@@ -2,7 +2,7 @@
 #define SHADER_H
 
 #include <glad\glad.h>
-#include <GLM\glm\glm.hpp>
+#include <glm\glm.hpp>
 #include "Macros.h"
 #include <string>
 #include <fstream>

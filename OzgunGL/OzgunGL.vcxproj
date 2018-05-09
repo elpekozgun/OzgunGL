@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\glad\include;$(SolutionDir)Dependencies\GLFW\include;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\glad\include;$(SolutionDir)Dependencies\GLFW\include;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\GLM;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\assimp build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -89,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\glad\include;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\glad\include;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\GLFW\include;C:\Users\ozgun\Dropbox\Visual Studio 2015\Projects\1.OpenGL\OzgunGL\Dependencies\GLM\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -150,7 +150,11 @@
     <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
     <None Include="res\Shaders\constantLightShader.glsl" />
     <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
-    <None Include="res\Shaders\FragmentShaderMaterialTexture.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureDirectionalLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTexturePointLight.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureSpotLight.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
