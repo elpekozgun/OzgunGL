@@ -48,6 +48,10 @@ Shader::Shader(const GLchar * vertexPath, const GLchar * fragmentPath)
 	glCompileShader(fragment);
 	CheckCompileErrors(fragment, "FRAGMENT");
 
+	// For other shaders i.e Geometry Shader
+
+
+
 	ID = glCreateProgram();
 	glAttachShader(ID, vertex);
 	glAttachShader(ID, fragment);
@@ -120,8 +124,6 @@ void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const
 {
 	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
-
-
 
 void Shader::CheckCompileErrors(unsigned int shaderOrProgram, std::string type)
 {

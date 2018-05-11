@@ -21,7 +21,13 @@
     <ClCompile Include="src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\LigthingMain.cpp">
+    <ClCompile Include="src\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MeshMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +38,16 @@
     <ClInclude Include="src\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\stb_image.h">
+    <ClInclude Include="src\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera.h">
+    <ClInclude Include="src\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,6 +64,12 @@
     <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl" />
     <None Include="res\Shaders\FragmentShaderTextureSpotLight.glsl" />
     <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl" />
+    <None Include="res\Shaders\ModelLoadingVertex.glsl" />
+    <None Include="res\Shaders\ModelLoadingFragment.glsl" />
+    <None Include="res\Shaders\LightVertexShader.glsl" />
+    <None Include="res\Shaders\ModelLoadingFragmentShaderLighted.glsl" />
+    <None Include="res\Shaders\ModelLoadingVertexShaderWithLight.glsl" />
+    <None Include="res\Models\DarkKnight\DarkKnight.mtl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
