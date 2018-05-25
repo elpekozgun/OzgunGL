@@ -27,7 +27,19 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MeshMain.cpp">
+    <ClCompile Include="src\Vendor\ImGui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\ImGui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\ImGui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\ImGui\imgui_impl_glfw_gl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AdvancedGLSLmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +59,28 @@
     <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\stb_image.h">
+    <ClInclude Include="src\Vendor\stb_Image\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\stb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\stb_rect_pack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\stb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\ImGui\imgui_impl_glfw_gl3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -69,7 +102,9 @@
     <None Include="res\Shaders\LightVertexShader.glsl" />
     <None Include="res\Shaders\ModelLoadingFragmentShaderLighted.glsl" />
     <None Include="res\Shaders\ModelLoadingVertexShaderWithLight.glsl" />
-    <None Include="res\Models\DarkKnight\DarkKnight.mtl" />
+    <None Include="res\Shaders\FragmentShaderDepthTest.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureAlpha.glsl" />
+    <None Include="res\Shaders\VertexShaderTextureAlpha.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
@@ -88,6 +123,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Textures\matrix.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Textures\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Textures\window.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

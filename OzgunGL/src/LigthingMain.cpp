@@ -324,8 +324,8 @@ int main(void)
 		
 		lightShader.setVec3("pointLights[3].position", pointLightPositions[3]);
 		lightShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
-		lightShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
-		lightShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setVec3("pointLights[3].diffuse", 0.8f, 0.0f, 0.0f);
+		lightShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 0.0f);
 		lightShader.SetFloat("pointLights[3].Kconstant", 1.0f);
 		lightShader.SetFloat("pointLights[3].Klinear", 0.09);
 		lightShader.SetFloat("pointLights[3].Kquad", 0.032);

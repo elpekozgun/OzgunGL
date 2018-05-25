@@ -133,10 +133,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c" />
+    <ClCompile Include="src\AdvancedGLSLmain.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\MeshMain.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Vendor\ImGui\imgui.cpp" />
+    <ClCompile Include="src\Vendor\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="src\Vendor\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="src\Vendor\ImGui\imgui_impl_glfw_gl3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mesh.h" />
@@ -144,17 +148,25 @@
     <ClInclude Include="src\Macros.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\stb_image.h" />
+    <ClInclude Include="src\Vendor\ImGui\imconfig.h" />
+    <ClInclude Include="src\Vendor\ImGui\imgui.h" />
+    <ClInclude Include="src\Vendor\ImGui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="src\Vendor\ImGui\imgui_internal.h" />
+    <ClInclude Include="src\Vendor\ImGui\stb_rect_pack.h" />
+    <ClInclude Include="src\Vendor\ImGui\stb_textedit.h" />
+    <ClInclude Include="src\Vendor\ImGui\stb_truetype.h" />
+    <ClInclude Include="src\Vendor\stb_Image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Models\DarkKnight\DarkKnight.mtl" />
     <None Include="res\Shaders\BasicFragmentShader.glsl" />
     <None Include="res\Shaders\BasicShader.glsl" />
     <None Include="res\Shaders\BasicVertexShader.glsl" />
     <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
     <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
     <None Include="res\Shaders\constantLightShader.glsl" />
+    <None Include="res\Shaders\FragmentShaderDepthTest.glsl" />
     <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
+    <None Include="res\Shaders\FragmentShaderTextureAlpha.glsl" />
     <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl" />
     <None Include="res\Shaders\FragmentShaderTextureDirectionalLight.glsl" />
     <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl" />
@@ -165,15 +177,18 @@
     <None Include="res\Shaders\ModelLoadingFragmentShaderLighted.glsl" />
     <None Include="res\Shaders\ModelLoadingVertex.glsl" />
     <None Include="res\Shaders\ModelLoadingVertexShaderWithLight.glsl" />
+    <None Include="res\Shaders\VertexShaderTextureAlpha.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Notes\OldProcedureAndNotes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Textures\awesomeface.png" />
+    <Image Include="res\Textures\window.png" />
     <Image Include="res\Textures\container.jpg" />
     <Image Include="res\Textures\container2_specular.png" />
     <Image Include="res\Textures\crate.png" />
+    <Image Include="res\Textures\grass.png" />
     <Image Include="res\Textures\matrix.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
