@@ -172,7 +172,7 @@ int main(void)
 	const char* path1 = "res/Models/nanosuit/nanosuit.obj";
 	//	const char* path1 = "res/Models/sponza/sponza.obj";
 
-	Model nanosuit(path1);
+	//Model nanosuit(path1);
 
 
 	std::vector<glm::vec3> vegetation;
@@ -191,6 +191,45 @@ int main(void)
 	vegetation.push_back(GlmVec3(2.2f, 0.0f, -1.8f));
 	vegetation.push_back(GlmVec3(-1.5f, 0.0f, -0.1f));
 	vegetation.push_back(GlmVec3(-2.3f, 0.0f, -0.4f));
+
+
+	//framebuffers
+	unsigned int FBO;
+	glGenFramebuffers(1, &FBO);
+	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+	std::cout<< (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)<< std::endl;
+	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	// 1) TEXTURE BUFFERS
+	unsigned int renderTexture;
+	glGenTextures(1, &renderTexture);
+	glBindTexture(GL_TEXTURE_2D, renderTexture);
+
+	// 1.1) Color buffer
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, renderTexture, 0);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	// 1.2) depth + stencil buffer
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, renderTexture, 0);
+
+	// 2) RENDER BUFFERS : Later introduced, uses OpenGL's native rendering format, makes it optimized for off-screen rendering
+	// Faster but generally write only, can be read by glReadPixels. Often used as depth and stencil attachment.
+
+	unsigned int RBO;
+	glGenRenderbuffers(1, &RBO);
+	glBindRenderbuffer(GL_RENDERBUFFER, RBO);
+
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
+
+	// RULE OF THUMB: If you never ned to sample data from a specific buffer, use renderbuffer, else use texture
+
+
+
 
 
 	//Bind vertex array for lamps
@@ -358,7 +397,7 @@ int main(void)
 		//Model = glm::scale(Model, glm::vec3(0.01f, 0.01f,0.01f));
 		nanoShader.setMat4("Model", Model);
 
-		nanosuit.Draw(nanoShader);
+		//nanosuit.Draw(nanoShader);
 
 
 		//lights
@@ -449,7 +488,7 @@ int main(void)
 		nanoShader.setVec3("pointLights[2].specular", 1.0f, 0.0f, 0.0f);
 
 		//draw reflections
-		nanosuit.Draw(nanoShader);
+		//nanosuit.Draw(nanoShader);
 
 		lampShader.Use();
 		lampShader.SetInt("isReflection", 1);
@@ -509,6 +548,8 @@ int main(void)
 		glfwPollEvents();
 	}
 
+
+	glDeleteBuffers(1, &FBO);
 	ImGui_ImplGlfwGL3_Shutdown();
 	ImGui::DestroyContext();
 	CLOSEWIN();

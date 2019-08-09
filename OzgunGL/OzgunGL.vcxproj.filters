@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="glsl">
+      <UniqueIdentifier>{e46cf32b-ab17-4ccc-ac43-98f92cf57a3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c">
@@ -39,7 +42,7 @@
     <ClCompile Include="src\Vendor\ImGui\imgui_impl_glfw_gl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AdvancedGLSLmain.cpp">
+    <ClCompile Include="src\ligthingmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,29 +88,72 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\BasicShader.glsl" />
-    <None Include="res\Shaders\BasicFragmentShader.glsl" />
-    <None Include="res\Shaders\BasicVertexShader.glsl" />
-    <None Include="res\Shaders\ColorIntroVertexShader.glsl" />
-    <None Include="res\Shaders\ColorIntroFragmentShader.glsl" />
-    <None Include="res\Shaders\constantLightShader.glsl" />
-    <None Include="res\Shaders\FragmentShaderMaterial.glsl" />
-    <None Include="res\Shaders\FragmentShaderTexturePointLight.glsl" />
-    <None Include="res\Shaders\FragmentShaderTextureDirectionalLight.glsl" />
-    <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl" />
-    <None Include="res\Shaders\FragmentShaderTextureSpotLight.glsl" />
-    <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl" />
-    <None Include="res\Shaders\ModelLoadingVertex.glsl" />
-    <None Include="res\Shaders\ModelLoadingFragment.glsl" />
-    <None Include="res\Shaders\LightVertexShader.glsl" />
-    <None Include="res\Shaders\ModelLoadingFragmentShaderLighted.glsl" />
-    <None Include="res\Shaders\ModelLoadingVertexShaderWithLight.glsl" />
-    <None Include="res\Shaders\FragmentShaderDepthTest.glsl" />
-    <None Include="res\Shaders\FragmentShaderTextureAlpha.glsl" />
-    <None Include="res\Shaders\VertexShaderTextureAlpha.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\Notes\OldProcedureAndNotes.txt" />
+    <None Include="res\Shaders\BasicFragmentShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\BasicShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\BasicVertexShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ColorIntroFragmentShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ColorIntroVertexShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\constantLightShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderDepthTest.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderMaterial.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTextureAlpha.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTextureBasicLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTextureDirectionalLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTextureMultiLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTexturePointLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\FragmentShaderTextureSpotLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\frameBufferFragment.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\frameBufferVertex.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\LightVertexShader.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ModelLoadingFragment.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ModelLoadingFragmentShaderLighted.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ModelLoadingVertex.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\ModelLoadingVertexShaderWithLight.glsl">
+      <Filter>glsl</Filter>
+    </None>
+    <None Include="res\Shaders\VertexShaderTextureAlpha.glsl">
+      <Filter>glsl</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Textures\container.jpg">
@@ -131,5 +177,10 @@
     <Image Include="res\Textures\window.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Notes\OldProcedureAndNotes.txt">
+      <Filter>glsl</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #define STB_IMAGE_IMPLEMENTATION
-#include <glad\glad.h>
-#include "GLFW\glfw3.h"
+#include<glad\glad.h>
+#include <GLFW\glfw3.h>
 
 #include "GLM/glm\glm.hpp"
 #include "GLM/glm\gtc\matrix_transform.hpp"
@@ -16,7 +16,6 @@
 
 #include <iostream>
 
-#pragma region Function Declerations
 
 void FrameBufferSizeCallback(GLFWwindow* window, int width, int height);
 void MouseCallBack(GLFWwindow * window, double xPos, double yPos);
@@ -25,7 +24,6 @@ void ProcessInput(GLFWwindow* window);
 void BindImage(const char * imageName, unsigned int* texture, GLenum format);
 glm::vec3 GlmVec3(float x, float y, float z);
 
-#pragma endregion
 
 GLFWwindow* StartWindow();
 
@@ -42,6 +40,50 @@ bool show_another_window = false;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
+
+float cubeTexture[] = {
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+};
 
 float cube[] = {
 	-0.5f, -0.5f, -0.5f, 1.0f, 0.0f,0.0f,
@@ -95,7 +137,7 @@ float plane[] = {
 };
 
 unsigned int indices[] = { 0,1,2,
-							2,3,0 };
+2,3,0 };
 
 glm::vec3 pointLightPositions[] = {
 	glm::vec3(0.0f,  2.2f,  2.0f),
@@ -104,7 +146,7 @@ glm::vec3 pointLightPositions[] = {
 };
 
 float grassVertices[] = {
-	// positions         // texture coords (swapped y coordinates because texture is flipped upside down)
+	// positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
 	0.0f,  0.5f,  0.0f,  0.0f,  1.0f,
 	0.0f, -0.5f,  0.0f,  0.0f,  0.0f,
 	1.0f, -0.5f,  0.0f,  1.0f,  0.0f,
@@ -113,6 +155,18 @@ float grassVertices[] = {
 	1.0f, -0.5f,  0.0f,  1.0f,  0.0f,
 	1.0f,  0.5f,  0.0f,  1.0f,  1.0f
 };
+
+float quadVertices[] = {
+	// positions   // texCoords
+	-1.0f,  1.0f,  0.0f, 1.0f,
+	-1.0f, -1.0f,  0.0f, 0.0f,
+	1.0f, -1.0f,  1.0f, 0.0f,
+
+	-1.0f,  1.0f,  0.0f, 1.0f,
+	1.0f, -1.0f,  1.0f, 0.0f,
+	1.0f,  1.0f,  1.0f, 1.0f
+};
+
 
 int main(void)
 {
@@ -123,18 +177,19 @@ int main(void)
 	Shader lampShader("res/Shaders/LightVertexShader.glsl", "res/Shaders/constantLightShader.glsl");
 	Shader planeShader("res/Shaders/ColorIntroVertexShader.glsl", "res/Shaders/FragmentShaderMaterial.glsl");
 	Shader vegetationShader("res/Shaders/VertexShaderTextureAlpha.glsl", "res/Shaders/FragmentShaderTextureAlpha.glsl");
+	Shader frameBufferShader("res/Shaders/frameBufferVertex.glsl", "res/Shaders/frameBufferFragment.glsl");
 
-//	const char* path1 = "res/Models/sponza/sponza.obj";
+
 	const char* path1 = "res/Models/nanosuit/nanosuit.obj";
+	//	const char* path1 = "res/Models/sponza/sponza.obj";
 
-
-	Model nanosuit(path1);
+	//Model nanosuit(path1);
 
 
 	std::vector<glm::vec3> vegetation;
 	vegetation.push_back(GlmVec3(-1.5f, 0.0f, -0.48f));
-	vegetation.push_back(GlmVec3( 1.5f, 0.0f,  0.51f));
-	vegetation.push_back(GlmVec3( 0.0f, 0.0f,  0.7f));
+	vegetation.push_back(GlmVec3(1.5f, 0.0f, 0.51f));
+	vegetation.push_back(GlmVec3(0.0f, 0.0f, 0.7f));
 	vegetation.push_back(GlmVec3(-0.3f, 0.0f, -2.3f));
 	vegetation.push_back(GlmVec3(0.5f, 0.0f, -0.6f));
 	vegetation.push_back(GlmVec3(2.0f, 0.0f, -1.6f));
@@ -146,7 +201,87 @@ int main(void)
 	vegetation.push_back(GlmVec3(1.5f, 0.0f, -2.1f));
 	vegetation.push_back(GlmVec3(2.2f, 0.0f, -1.8f));
 	vegetation.push_back(GlmVec3(-1.5f, 0.0f, -0.1f));
-	vegetation.push_back(GlmVec3( -2.3f, 0.0f, -0.4f));
+	vegetation.push_back(GlmVec3(-2.3f, 0.0f, -0.4f));
+
+
+	//framebuffers
+	//unsigned int FBO;
+	//glGenFramebuffers(1, &FBO);
+	//glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+	//std::cout << (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) << std::endl;
+	////glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	//// 1) TEXTURE BUFFERS
+	//unsigned int renderTexture;
+	//glGenTextures(1, &renderTexture);
+	//glBindTexture(GL_TEXTURE_2D, renderTexture);
+
+	//// 1.1) Color buffer
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+	//glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, renderTexture, 0);
+
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	//// 1.2) depth + stencil buffer
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+	//glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, renderTexture, 0);
+
+	// 2) RENDER BUFFERS : Later introduced, uses OpenGL's native rendering format, makes it optimized for off-screen rendering
+	// Faster but generally write only, can be read by glReadPixels. Often used as depth and stencil attachment.
+
+	//unsigned int RBO;
+	//glGenRenderbuffers(1, &RBO);
+	//glBindRenderbuffer(GL_RENDERBUFFER, RBO);
+
+	//glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800);
+	//glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
+
+	//// RULE OF THUMB: If you never ned to sample data from a specific buffer, use renderbuffer, else use texture
+
+
+	unsigned int quadVAO;
+	glGenVertexArrays(1, &quadVAO);
+
+
+	unsigned int FBO;
+	glGenBuffers(1, &FBO);
+	glBindBuffer(GL_FRAMEBUFFER, FBO);
+
+	unsigned int TextureColorBuffer;
+	glGenTextures(1, &TextureColorBuffer);
+	glBindTexture(GL_TEXTURE_2D, TextureColorBuffer);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, TextureColorBuffer, 0);
+
+	// Create renderbuffer object for depth and stencil testing
+
+	unsigned int RBO;
+	glGenBuffers(1, &RBO);
+	glBindBuffer(GL_RENDERBUFFER, RBO);
+	glRenderbufferStorage(GL_FRAMEBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
+	glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
+	
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	{
+		std::cout << "Framebuffer is not complete" << std::endl;
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+	glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	frameBufferShader.Use();
+
+
+
 
 
 
@@ -154,17 +289,17 @@ int main(void)
 	unsigned int lightVAO, VBO, planeVAO;
 	glGenVertexArrays(1, &lightVAO);
 	glGenBuffers(1, &VBO);
-	
+
 	glBindVertexArray(lightVAO);
 
-	glBindBuffer(GL_ARRAY_BUFFER,VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(cube), &cube[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 
 
 	//plane
@@ -187,6 +322,23 @@ int main(void)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 
+	// comparison Cube
+	unsigned int windowTextureID = -1;
+	BindImage("res/Textures/window.png", &windowTextureID, GL_RGBA);
+	unsigned int cubeVAO, cubeTexVBO;
+	glGenVertexArrays(1, &cubeVAO);
+	glGenBuffers(1, &cubeTexVBO);
+
+	glBindVertexArray(cubeVAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, cubeTexVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(cubeTexture), &cubeTexture[0], GL_STATIC_DRAW);
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 
 
 	//grass
@@ -194,7 +346,7 @@ int main(void)
 	BindImage("res/Textures/grass.png", &grassTextureID, GL_RGBA);
 	unsigned int grassVAO, grassVBO;
 
-	glGenVertexArrays(1,&grassVAO);
+	glGenVertexArrays(1, &grassVAO);
 	glGenBuffers(1, &grassVBO);
 
 	glBindVertexArray(grassVAO);
@@ -203,27 +355,27 @@ int main(void)
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	
+
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3*sizeof(float)));
-	
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+
 	glBindVertexArray(0);
 
 	glEnable(GL_DEPTH_TEST);
-	
-
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);	//face to cull: default back
+							//glFrontFace(GL_CW);		//which face is front? default: ccw
 
 	glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	
+
 	std::map<float, glm::vec3> sortedTextures;
 	for (unsigned int i = 0; i < vegetation.size(); i++)
 	{
 		float distance = glm::length(camera.Position - vegetation[i]);
 		sortedTextures[distance] = vegetation[i];
 	}
-
 
 
 	while (!glfwWindowShouldClose(window))
@@ -234,12 +386,13 @@ int main(void)
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		std::string fps = "fps: " +  std::to_string(1.0f / deltaTime);
+		std::string fps = "fps: " + std::to_string(1.0f / deltaTime);
 		ImGui_ImplGlfwGL3_NewFrame();
 		ImGui::Text(fps.c_str());
 
 		//render
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT |GL_STENCIL_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
 
 		// nanosuit
 		nanoShader.Use();
@@ -294,11 +447,12 @@ int main(void)
 
 		glm::mat4 Model = glm::mat4(1.0f);
 		Model = glm::scale(Model, glm::vec3(0.3f, 0.3f, 0.3f));
+		//Model = glm::scale(Model, glm::vec3(0.01f, 0.01f,0.01f));
 		nanoShader.setMat4("Model", Model);
 
-		nanosuit.Draw(nanoShader);
+		//nanosuit.Draw(nanoShader);
 
-	
+
 		//lights
 		lampShader.Use();
 		lampShader.setMat4("View", View);
@@ -314,7 +468,7 @@ int main(void)
 			glm::mat4 lampModel = glm::mat4(1.0f);
 			lampModel = glm::translate(lampModel, pointLightPositions[i]);
 			lampModel = glm::scale(lampModel, glm::vec3(0.2f));
-			
+
 			lampShader.setMat4("Model", lampModel);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
@@ -341,18 +495,18 @@ int main(void)
 		glBindVertexArray(planeVAO);
 		glm::mat4 planeModel = glm::mat4(1.0f);
 		planeModel = glm::rotate(planeModel, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		planeModel = glm::scale(planeModel, glm::vec3(6.0f, 6.0f, 6.0f));
+		planeModel = glm::scale(planeModel, glm::vec3(6.0f, -6.0f, 6.0f));
 		planeShader.setMat4("Model", planeModel);
-		
 
 
 
-	glEnable(GL_STENCIL_TEST);
+
+		glEnable(GL_STENCIL_TEST);
 
 		//stencil fail, depth fail, both pass
-		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);	
-		
-		glStencilMask(0xFF); 
+		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
+		glStencilMask(0xFF);
 		glStencilFunc(GL_ALWAYS, 1, 0xFF);  // set value of ref as 0xFF. 
 		glDepthMask(GL_FALSE);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -362,13 +516,13 @@ int main(void)
 		glStencilMask(0xFF);
 		glStencilFunc(GL_LEQUAL, 1, 0xFF);
 		glDepthMask(GL_TRUE);
-		
+
 
 		//Model = glm::rotate(Model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		nanoShader.Use();
 		Model = glm::scale(Model, glm::vec3(1.0f, -1.0f, 1.0f));
 		nanoShader.setMat4("Model", Model);
-		
+
 		nanoShader.setVec3("directLight.direction", -0.2f, -1.0f, -0.3f);
 		nanoShader.setVec3("directLight.ambient", 0.00f, 0.00f, 0.00f);
 		nanoShader.setVec3("directLight.diffuse", 0.1f, 0.1f, 0.2f);
@@ -385,54 +539,59 @@ int main(void)
 		nanoShader.setVec3("pointLights[2].ambient", 0.02f, 0.02f, 0.02f);
 		nanoShader.setVec3("pointLights[2].diffuse", 0.0f, 0.0f, 0.8f);
 		nanoShader.setVec3("pointLights[2].specular", 1.0f, 0.0f, 0.0f);
-		
+
 		//draw reflections
-		nanosuit.Draw(nanoShader);
+		//nanosuit.Draw(nanoShader);
 
 		lampShader.Use();
 		lampShader.SetInt("isReflection", 1);
-		lampShader.setVec3("overrideColor", GlmVec3(0.1f,0.1f,0.1f));
+		lampShader.setVec3("overrideColor", GlmVec3(0.1f, 0.1f, 0.1f));
 		glBindVertexArray(lightVAO);
 		for (int i = 0; i < pointLightPositions->length(); i++)
 		{
 			pointLightPositions[i].x += (float)sin(glfwGetTime()) * 0.02f;
 			pointLightPositions[i].z += (float)cos(glfwGetTime()) * 0.02f;
-			
+
 
 			glm::mat4 lampModel = glm::mat4(1.0f);
-			lampModel = glm::translate(lampModel, GlmVec3(pointLightPositions[i].x, -1 * pointLightPositions[i].y ,pointLightPositions[i].z));//pointLightPositions[i]
+			lampModel = glm::translate(lampModel, GlmVec3(pointLightPositions[i].x, -1 * pointLightPositions[i].y, pointLightPositions[i].z));//pointLightPositions[i]
 			lampModel = glm::scale(lampModel, glm::vec3(0.2f));
 			lampShader.setMat4("Model", lampModel);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
-	glDisable(GL_STENCIL_TEST);	
+		glDisable(GL_STENCIL_TEST);
 
-	//sort and render blending textures last since z-buffer doesn't care about it.
-	// Draw opaques -> sort transparent objects -> draw transparent objects
+		//sort and render blending textures last since z-buffer doesnt care about it.
+		// Draw opaques -> sort transparent objects -> draw transparent objects
 
-	//enable color blending
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	
-	
-	
-	// Grasses
-	//vegetationShader.Use();
-	//vegetationShader.setMat4("View", View);
-	//vegetationShader.setMat4("Projection", Projection);
-	//vegetationShader.SetInt("texture1", 0);
-	//glBindTexture(GL_TEXTURE_2D, grassTextureID);
-	//glBindVertexArray(grassVAO);
+		//enable color blending
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		// Grasses
+		vegetationShader.Use();
+		vegetationShader.setMat4("View", View);
+		vegetationShader.setMat4("Projection", Projection);
+		vegetationShader.SetInt("texture1", 0);
+		glBindTexture(GL_TEXTURE_2D, grassTextureID);
+		glBindVertexArray(grassVAO);
+		for (std::map<float, glm::vec3>::reverse_iterator it = sortedTextures.rbegin(); it != sortedTextures.rend(); ++it)
+		{
+			glm::mat4 vegatationModel = glm::mat4(1.0f);
+			vegatationModel = glm::translate(vegatationModel, it->second); // it -> first = key, it -> second value
+			vegatationModel = glm::translate(vegatationModel, GlmVec3(0.0f, 0.5f, 0.0f));
+			vegetationShader.setMat4("Model", vegatationModel);
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+		}
 
-	//	for (std::map<float, glm::vec3>::reverse_iterator it = sortedTextures.rbegin(); it != sortedTextures.rend(); ++it)
-	//	{
-	//		glm::mat4 vegatationModel = glm::mat4(1.0f);
-	//		vegatationModel = glm::translate(vegatationModel, it->second); // it -> first = key, it -> second value
-	//		vegatationModel = glm::translate(vegatationModel, GlmVec3(0.0f, 0.5f, 0.0f));
-	//		vegetationShader.setMat4("Model", vegatationModel);
-	//		glDrawArrays(GL_TRIANGLES, 0, 6);
-	//	}
+		glBindTexture(GL_TEXTURE_2D, windowTextureID);
+		glBindVertexArray(cubeVAO);
+
+		glm::mat4 cubeModel = glm::mat4(1.0f);
+		cubeModel = glm::translate(cubeModel, GlmVec3(0.0f, 0.51f, 2.0f));
+		vegetationShader.setMat4("Model", cubeModel);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 
 		ImGui::Render();
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
@@ -442,6 +601,8 @@ int main(void)
 		glfwPollEvents();
 	}
 
+
+	glDeleteBuffers(1, &FBO);
 	ImGui_ImplGlfwGL3_Shutdown();
 	ImGui::DestroyContext();
 	CLOSEWIN();

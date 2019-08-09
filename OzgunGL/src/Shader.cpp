@@ -57,7 +57,7 @@ Shader::Shader(const GLchar * vertexPath, const GLchar * fragmentPath)
 	glAttachShader(ID, fragment);
 	glLinkProgram(ID);
 	CheckCompileErrors(ID, "PROGRAM");
-
+	
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
 }

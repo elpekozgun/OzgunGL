@@ -4,7 +4,7 @@
 #include <GLFW\glfw3.h>
 #include "Macros.h"
 #include "Shader.h"
-#include "stb_image.h"
+#include "src/Vendor/stb_Image/stb_image.h"
 #include "GLM/glm\glm.hpp"
 #include "GLM/glm\gtc\matrix_transform.hpp"
 #include "GLM/glm\gtc\type_ptr.hpp"

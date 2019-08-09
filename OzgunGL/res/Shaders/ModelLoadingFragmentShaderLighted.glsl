@@ -50,7 +50,7 @@ struct SpotLight
 	float Kquad;
 };
 
-#define NR_POINT_LIGHTS 4
+#define NR_POINT_LIGHTS 3
 out vec4 FragColor;
 
 uniform vec3 cameraPosition;
