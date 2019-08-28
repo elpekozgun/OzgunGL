@@ -2,9 +2,9 @@
 OpenGL/ C++
 
 <p align="center">
-  <img src= [![Everything Is AWESOME](https://img.youtube.com/vi/k3VsnQZ63b4/0.jpg)](https://www.youtube.com/watch?v=k3VsnQZ63b4)/>  
+  <img src= "https://img.youtube.com/vi/k3VsnQZ63b4/0.jpg"/> 
 </p>
-
+[![Everything Is AWESOME](https://img.youtube.com/vi/k3VsnQZ63b4/0.jpg)](https://www.youtube.com/watch?v=k3VsnQZ63b4)/>  
 
 
 
