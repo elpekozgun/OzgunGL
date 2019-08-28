@@ -1,7 +1,8 @@
 # OzgunGL
 OpenGL/ C++
 Test Project that can:
--.obj loading via assimp
+
+- Load .obj via assimp
 
 - Phong shading with diffuse, specular and ambient lighting.
 
@@ -9,4 +10,4 @@ Test Project that can:
 
 - Face Culling
 
-- Reflections via stencil, and depth buffer
+- Naive reflections using depth and stencil buffer.
