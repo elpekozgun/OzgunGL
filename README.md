@@ -1,7 +1,7 @@
 # OzgunGL
 OpenGL/ C++
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/k3VsnQZ63b4/0.jpg)](https://www.youtube.com/watch?v=k3VsnQZ63b4)/>  
+[![Everything Is AWESOME](https://img.youtube.com/vi/k3VsnQZ63b4/0.jpg)](https://www.youtube.com/watch?v=k3VsnQZ63b4)
 
 
 Educational Project that can:
